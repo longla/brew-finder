@@ -1,18 +1,17 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useBreweryStore } from '../store/brewery'
+import BreweryDetailSkeleton from './BreweryDetailSkeleton.vue'
 
 const store = useBreweryStore()
-const { selectedBrewery, loading } = storeToRefs(store)
+const { selectedBrewery, detailLoading } = storeToRefs(store)
 const { clearSelectedBrewery } = store
 </script>
 
 <template>
-  <div v-if="selectedBrewery || loading" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div v-if="selectedBrewery || detailLoading" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg max-h-full overflow-y-auto">
-      <div v-if="loading" class="text-center">
-        <p>Loading details...</p>
-      </div>
+      <BreweryDetailSkeleton v-if="detailLoading" />
       <div v-else-if="selectedBrewery">
         <header class="flex justify-between items-start mb-4">
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ selectedBrewery.name }}</h2>

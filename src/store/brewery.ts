@@ -5,6 +5,7 @@ export const useBreweryStore = defineStore('brewery', () => {
   const breweries = ref([])
   const selectedBrewery = ref(null)
   const loading = ref(false)
+  const detailLoading = ref(false)
   const error = ref<string | null>(null)
 
   const searchParams = reactive({
@@ -43,7 +44,7 @@ export const useBreweryStore = defineStore('brewery', () => {
   }
 
   async function fetchBreweryById(id: string) {
-    loading.value = true
+    detailLoading.value = true
     error.value = null
     selectedBrewery.value = null
     
@@ -56,18 +57,20 @@ export const useBreweryStore = defineStore('brewery', () => {
     } catch (e: any) {
       error.value = e.message
     } finally {
-      loading.value = false
+      detailLoading.value = false
     }
   }
 
   function clearSelectedBrewery() {
     selectedBrewery.value = null
+    detailLoading.value = false
   }
 
   return {
     breweries,
     selectedBrewery,
     loading,
+    detailLoading,
     error,
     searchParams,
     fetchBreweries,
