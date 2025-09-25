@@ -17,7 +17,8 @@ const router = useRouter()
 const { breweries, loading, error, searchParams } = storeToRefs(store)
 const { fetchBreweries, fetchBreweryById } = store
 
-// Watch for changes in search parameters and update the URL
+// This two-way synchronization between the store and the URL query ensures
+// that the application state is shareable and refresh-safe.
 watch(searchParams, (newParams) => {
   // Reset page to 1 when filters change
   if (newParams.query !== route.query.query || newParams.by_city !== route.query.by_city || newParams.by_type !== route.query.by_type) {
