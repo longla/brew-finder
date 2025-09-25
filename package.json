@@ -24,6 +24,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
+    "@unocss/preset-icons": "^66.5.2",
     "@unocss/reset": "^66.5.2",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/test-utils": "^2.4.6",

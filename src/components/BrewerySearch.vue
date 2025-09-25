@@ -33,14 +33,17 @@ const breweryTypes = [
       placeholder="Filter by city..."
       class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
     />
-    <select
-      v-model="searchParams.by_type"
-      class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-    >
-      <option value="">All Types</option>
-      <option v-for="type in breweryTypes" :key="type" :value="type">
-        {{ type.charAt(0).toUpperCase() + type.slice(1) }}
-      </option>
-    </select>
+    <div class="relative">
+      <select
+        v-model="searchParams.by_type"
+        class="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white appearance-none"
+      >
+        <option value="">All Types</option>
+        <option v-for="type in breweryTypes" :key="type" :value="type">
+          {{ type.charAt(0).toUpperCase() + type.slice(1) }}
+        </option>
+      </select>
+      <span class="i-heroicons-chevron-down-20-solid absolute top-1/2 right-3 -translate-y-1/2 pointer-events-none text-gray-500"></span>
+    </div>
   </div>
 </template>
