@@ -34,6 +34,7 @@ This is a small application that allows users to search for breweries using the 
 
 Given more time, I would make the following improvements:
 
+*   **Develop a Core Component Library:** For long-term scalability, generic elements like the styled inputs, dropdowns, and list components could be extracted into a separate, shareable component library. This would ensure visual and functional consistency across multiple future projects and streamline development.
 *   **Improved Error Handling:** Display more user-friendly error messages and provide options for retrying failed API requests.
 *   **More Comprehensive Testing:** Add more unit tests to cover all components and the Pinia store. I would also add end-to-end tests with Cypress to test the application's full user flow.
 *   **Debouncing Search Inputs:** Add a debounce to the search and filter inputs to avoid making excessive API calls while the user is typing.
