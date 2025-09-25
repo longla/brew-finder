@@ -1,11 +1,12 @@
-import { createApp } from "vue";
+import { ViteSSG } from "vite-ssg";
 import { createPinia } from "pinia";
-import router from "./router";
 import App from "./App.vue";
+import routes from "./router";
 
 import "@unocss/reset/tailwind.css";
 import "uno.css";
 
-const pinia = createPinia();
-
-createApp(App).use(router).use(pinia).mount("#app");
+export const createApp = ViteSSG(App, { routes }, ({ app }) => {
+  const pinia = createPinia();
+  app.use(pinia);
+});
