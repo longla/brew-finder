@@ -1,55 +1,67 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { onMounted, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { useBreweryStore } from '../store/brewery'
+import { storeToRefs } from "pinia";
+import { onMounted, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useBreweryStore } from "../store/brewery";
 
-import BreweryDetail from '../components/BreweryDetail.vue'
-import BreweryList from '../components/BreweryList.vue'
-import BreweryListSkeleton from '../components/BreweryListSkeleton.vue'
-import BrewerySearch from '../components/BrewerySearch.vue'
-import Pagination from '../components/Pagination.vue'
+import BreweryDetail from "../components/BreweryDetail.vue";
+import BreweryList from "../components/BreweryList.vue";
+import BreweryListSkeleton from "../components/BreweryListSkeleton.vue";
+import BrewerySearch from "../components/BrewerySearch.vue";
+import Pagination from "../components/Pagination.vue";
 
-const store = useBreweryStore()
-const route = useRoute()
-const router = useRouter()
+const store = useBreweryStore();
+const route = useRoute();
+const router = useRouter();
 
-const { breweries, loading, error, searchParams } = storeToRefs(store)
-const { fetchBreweries, fetchBreweryById } = store
+const { breweries, loading, error, searchParams } = storeToRefs(store);
+const { fetchBreweries, fetchBreweryById } = store;
 
 // This two-way synchronization between the store and the URL query ensures
 // that the application state is shareable and refresh-safe.
-watch(searchParams, (newParams) => {
-  // Reset page to 1 when filters change
-  if (newParams.query !== route.query.query || newParams.by_city !== route.query.by_city || newParams.by_type !== route.query.by_type) {
-    searchParams.value.page = 1
-  }
-  router.push({ query: { ...newParams } })
-  fetchBreweries()
-}, { deep: true })
+watch(
+  searchParams,
+  (newParams) => {
+    // Reset page to 1 when filters change
+    if (
+      newParams.query !== route.query.query ||
+      newParams.by_city !== route.query.by_city ||
+      newParams.by_type !== route.query.by_type
+    ) {
+      searchParams.value.page = 1;
+    }
+    router.push({ query: { ...newParams } });
+    fetchBreweries();
+  },
+  { deep: true }
+);
 
 // Watch for changes in the URL query and update the search parameters
-watch(() => route.query, (newQuery) => {
-  searchParams.value.query = (newQuery.query as string) || ''
-  searchParams.value.by_city = (newQuery.by_city as string) || ''
-  searchParams.value.by_type = (newQuery.by_type as string) || ''
-  searchParams.value.page = Number(newQuery.page) || 1
-}, { deep: true, immediate: true })
+watch(
+  () => route.query,
+  (newQuery) => {
+    searchParams.value.query = (newQuery.query as string) || "";
+    searchParams.value.by_city = (newQuery.by_city as string) || "";
+    searchParams.value.by_type = (newQuery.by_type as string) || "";
+    searchParams.value.page = Number(newQuery.page) || 1;
+  },
+  { deep: true, immediate: true }
+);
 
 function handleSelectBrewery(id: string) {
-  fetchBreweryById(id)
+  fetchBreweryById(id);
 }
 
 onMounted(() => {
-  fetchBreweries()
-})
+  fetchBreweries();
+});
 </script>
 
 <template>
   <div>
     <header class="mb-8">
-      <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100">Brewery Finder</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400">Find your next favorite brewery.</p>
+      <h1 class="text-4xl font-bold text-gray-800">Brewery Finder</h1>
+      <p class="text-lg text-gray-600">Find your next favorite brewery.</p>
     </header>
 
     <BrewerySearch />
@@ -63,7 +75,10 @@ onMounted(() => {
         <p>No breweries found. Try a different search.</p>
       </div>
       <div v-else>
-        <BreweryList :breweries="breweries" @select-brewery="handleSelectBrewery" />
+        <BreweryList
+          :breweries="breweries"
+          @select-brewery="handleSelectBrewery"
+        />
         <Pagination />
       </div>
     </main>
