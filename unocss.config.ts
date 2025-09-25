@@ -25,5 +25,10 @@ export default defineConfig({
       },
     }),
   ],
+  theme: {
+    colors: {
+      "brew-amber": "#F59E0B",
+    },
+  },
   transformers: [transformerDirectives(), transformerVariantGroup()],
 });

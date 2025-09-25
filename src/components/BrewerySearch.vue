@@ -25,18 +25,18 @@ const breweryTypes = [
       v-model.lazy.trim="searchParams.query"
       type="text"
       placeholder="Search by name..."
-      class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+      class="w-full px-4 py-2 bg-white border-gray-300 rounded-lg shadow-sm focus:ring-brew-amber focus:border-brew-amber transition"
     />
     <input
       v-model.lazy.trim="searchParams.by_city"
       type="text"
       placeholder="Filter by city..."
-      class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+      class="w-full px-4 py-2 bg-white border-gray-300 rounded-lg shadow-sm focus:ring-brew-amber focus:border-brew-amber transition"
     />
     <div class="relative">
       <select
         v-model="searchParams.by_type"
-        class="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white appearance-none"
+        class="w-full pl-4 pr-10 py-2 bg-white border-gray-300 rounded-lg shadow-sm focus:ring-brew-amber focus:border-brew-amber appearance-none transition"
       >
         <option value="">All Types</option>
         <option v-for="type in breweryTypes" :key="type" :value="type">
