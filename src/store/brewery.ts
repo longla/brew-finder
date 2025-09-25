@@ -31,7 +31,7 @@ export const useBreweryStore = defineStore('brewery', () => {
       params.append('page', searchParams.page.toString())
       params.append('per_page', searchParams.per_page.toString())
 
-      const response = await fetch(`${API_URL}?${params.toString()}`)
+      const response = await fetch(`${API_URL}?${params.toString()}`, { redirect: 'manual' })
       if (!response.ok) throw new Error('Failed to fetch breweries.')
       
       const data = await response.json()
@@ -49,7 +49,7 @@ export const useBreweryStore = defineStore('brewery', () => {
     selectedBrewery.value = null
     
     try {
-      const response = await fetch(`${API_URL}/${id}`)
+      const response = await fetch(`${API_URL}/${id}`, { redirect: 'manual' })
       if (!response.ok) throw new Error('Failed to fetch brewery details.')
 
       const data = await response.json()
