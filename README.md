@@ -24,7 +24,8 @@ This is a small application that allows users to search for breweries using the 
 
 *   **Framework:** Vue 3 with Vite, as preferred in the exercise description.
 *   **State Management:** Pinia is used to manage the application's global state. This includes the list of breweries, search parameters, loading/error states, and the selected brewery for the detail view. Using a centralized store makes the state predictable and easier to debug.
-*   **Component Design:** The UI is broken down into small, single-purpose components (`BrewerySearch`, `BreweryList`, `BreweryListItem`, `BreweryDetail`, `Pagination`). This improves reusability and makes the codebase easier to understand and maintain.
+*   **Component Design:** The UI is broken down into small, single-purpose components (`BrewerySearch`, `BreweryList`, `BreweryListItem`, `BreweryDetail`, `Pagination`, `BreweryListSkeleton`, `BreweryDetailSkeleton`). This improves reusability and makes the codebase easier to understand and maintain.
+*   **Loading State UX:** To provide a modern and responsive user experience, loading states are handled with animated skeleton components instead of simple text. This approach gives a clear indication that content is loading while mimicking the final layout, which improves perceived performance and aligns with the goal of demonstrating a strong sense of design and UX.
 *   **Routing:** Vue Router is used to synchronize the application's state (search, filters, page) with the URL. This makes the application's state bookmarkable and shareable.
 *   **Styling:** UnoCSS is used for styling. It's a utility-first CSS framework that allows for rapid UI development.
 *   **Testing:** Vitest and Vue Test Utils are used for unit testing. A test is provided for the `BreweryListItem` component to demonstrate the testing approach.
