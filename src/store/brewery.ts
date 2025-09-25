@@ -5,7 +5,7 @@ import { ITEMS_PER_PAGE } from '@/constants'
 export const useBreweryStore = defineStore('brewery', () => {
   const breweries = ref([])
   const selectedBrewery = ref(null)
-  const loading = ref(false)
+  const breweriesLoading = ref(false)
   const detailLoading = ref(false)
   const error = ref<string | null>(null)
 
@@ -20,7 +20,7 @@ export const useBreweryStore = defineStore('brewery', () => {
   const API_URL = 'https://api.openbrewerydb.org/v1/breweries'
 
   async function fetchBreweries() {
-    loading.value = true
+    breweriesLoading.value = true
     error.value = null
     breweries.value = []
 
@@ -40,7 +40,7 @@ export const useBreweryStore = defineStore('brewery', () => {
     } catch (e: any) {
       error.value = e.message
     } finally {
-      loading.value = false
+      breweriesLoading.value = false
     }
   }
 
@@ -70,7 +70,7 @@ export const useBreweryStore = defineStore('brewery', () => {
   return {
     breweries,
     selectedBrewery,
-    loading,
+    breweriesLoading,
     detailLoading,
     error,
     searchParams,

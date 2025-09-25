@@ -14,7 +14,7 @@ const store = useBreweryStore();
 const route = useRoute();
 const router = useRouter();
 
-const { breweries, loading, error, searchParams } = storeToRefs(store);
+const { breweries, breweriesLoading, error, searchParams } = storeToRefs(store);
 const { fetchBreweries, fetchBreweryById } = store;
 
 // This two-way synchronization between the store and the URL query ensures
@@ -67,7 +67,7 @@ onMounted(() => {
     <BrewerySearch />
 
     <main>
-      <BreweryListSkeleton v-if="loading" :count="searchParams.per_page" />
+      <BreweryListSkeleton v-if="breweriesLoading" :count="searchParams.per_page" />
       <div v-else-if="error" class="text-center text-red-500">
         <p>Error: {{ error }}</p>
       </div>
