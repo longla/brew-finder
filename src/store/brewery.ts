@@ -13,7 +13,7 @@ export const useBreweryStore = defineStore('brewery', () => {
     by_city: '',
     by_type: '',
     page: 1,
-    per_page: 20,
+    per_page: 10,
   })
 
   const API_URL = 'https://api.openbrewerydb.org/v1/breweries'
