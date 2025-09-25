@@ -43,7 +43,7 @@ const breweryTypes = [
           {{ type.charAt(0).toUpperCase() + type.slice(1) }}
         </option>
       </select>
-      <span class="i-heroicons-chevron-down-20-solid absolute top-1/2 right-3 -translate-y-1/2 pointer-events-none text-gray-500"></span>
+      <span class="i-heroicons-chevron-down-20-solid text-xl absolute top-1/2 right-3 -translate-y-1/2 pointer-events-none text-gray-500"></span>
     </div>
   </div>
 </template>
