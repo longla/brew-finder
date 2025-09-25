@@ -43,4 +43,4 @@ Given more time, I would make the following improvements:
 - **More Comprehensive Testing:** Add more unit tests to cover all components and the Pinia store. I would also add end-to-end tests with Cypress to test the application's full user flow.
 - **Debouncing Search Inputs:** Add a debounce to the search and filter inputs to avoid making excessive API calls while the user is typing.
 - **Accessibility (a11y):** Conduct a full accessibility audit to ensure the application is usable by everyone, including adding ARIA attributes and ensuring proper keyboard navigation.
-- **Code Refinements:** Refactor and further abstract some of the logic, for example, creating a dedicated composable for handling the API requests.
+*   **Code Refinements:** The API fetching logic could be further abstracted. A robust implementation would involve creating a central `useHttp` composable to handle common concerns like logging and error handling, which a more specific `useBreweryApi` composable would then use instead of calling `fetch` directly.
