@@ -8,6 +8,7 @@ import BrewerySearch from '../components/BrewerySearch.vue'
 import BreweryList from '../components/BreweryList.vue'
 import Pagination from '../components/Pagination.vue'
 import BreweryDetail from '../components/BreweryDetail.vue'
+import BreweryListSkeleton from '../components/BreweryListSkeleton.vue'
 
 const store = useBreweryStore()
 const route = useRoute()
@@ -53,9 +54,7 @@ onMounted(() => {
     <BrewerySearch />
 
     <main>
-      <div v-if="loading && breweries.length === 0" class="text-center">
-        <p>Loading...</p>
-      </div>
+      <BreweryListSkeleton v-if="loading" :count="searchParams.per_page" />
       <div v-else-if="error" class="text-center text-red-500">
         <p>Error: {{ error }}</p>
       </div>
