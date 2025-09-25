@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, reactive } from 'vue'
+import { ITEMS_PER_PAGE } from '@/constants'
 
 export const useBreweryStore = defineStore('brewery', () => {
   const breweries = ref([])
@@ -13,7 +14,7 @@ export const useBreweryStore = defineStore('brewery', () => {
     by_city: '',
     by_type: '',
     page: 1,
-    per_page: 10,
+    per_page: ITEMS_PER_PAGE,
   })
 
   const API_URL = 'https://api.openbrewerydb.org/v1/breweries'

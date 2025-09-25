@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { ITEMS_PER_PAGE } from '@/constants';
+
 defineProps({
   count: {
     type: Number,
-    default: 10,
+    default: ITEMS_PER_PAGE,
   },
 });
 </script>
