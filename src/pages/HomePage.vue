@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { storeToRefs } from 'pinia'
 import { useBreweryStore } from '../store/brewery'
 
-import BrewerySearch from '../components/BrewerySearch.vue'
-import BreweryList from '../components/BreweryList.vue'
-import Pagination from '../components/Pagination.vue'
 import BreweryDetail from '../components/BreweryDetail.vue'
+import BreweryList from '../components/BreweryList.vue'
 import BreweryListSkeleton from '../components/BreweryListSkeleton.vue'
+import BrewerySearch from '../components/BrewerySearch.vue'
+import Pagination from '../components/Pagination.vue'
 
 const store = useBreweryStore()
 const route = useRoute()
@@ -45,7 +45,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="p-4 sm:p-6 lg:p-8">
+  <div>
     <header class="mb-8">
       <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100">Brewery Finder</h1>
       <p class="text-lg text-gray-600 dark:text-gray-400">Find your next favorite brewery.</p>
